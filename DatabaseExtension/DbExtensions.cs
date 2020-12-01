@@ -13,17 +13,128 @@ namespace DatabaseExtension {
             obj.SetValues(row);
             return obj;
         }
-        private static Dictionary<Type, ConstructorInfo> _constructors = new Dictionary<Type, ConstructorInfo>();
+        public static T0 Create<T0, T1>(this SqlResultRow row, T1 arg1) {
+            var ctor = GetConstructor<T0, T1>();
+            var obj = (T0)ctor.Invoke(new object[] { arg1 });
+            obj.SetValues(row);
+            return obj;
+        }
+        public static T0 Create<T0, T1, T2>(this SqlResultRow row, T1 arg1, T2 arg2) {
+            var ctor = GetConstructor<T0, T1, T2>();
+            var obj = (T0)ctor.Invoke(new object[] { arg1, arg2 });
+            obj.SetValues(row);
+            return obj;
+        }
+        public static T0 Create<T0, T1, T2, T3>(this SqlResultRow row, T1 arg1, T2 arg2, T3 arg3) {
+            var ctor = GetConstructor<T0, T1, T2, T3>();
+            var obj = (T0)ctor.Invoke(new object[] { arg1, arg2, arg3 });
+            obj.SetValues(row);
+            return obj;
+        }
+        public static T0 Create<T0, T1, T2, T3, T4>(this SqlResultRow row, T1 arg1, T2 arg2, T3 arg3, T4 arg4) {
+            var ctor = GetConstructor<T0, T1, T2, T3, T4>();
+            var obj = (T0)ctor.Invoke(new object[] { arg1, arg2, arg3, arg4 });
+            obj.SetValues(row);
+            return obj;
+        }
+        public static T0 Create<T0, T1, T2, T3, T4, T5>(this SqlResultRow row, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) {
+            var ctor = GetConstructor<T0, T1, T2, T3, T4, T5>();
+            var obj = (T0)ctor.Invoke(new object[] { arg1, arg2, arg3, arg4, arg5 });
+            obj.SetValues(row);
+            return obj;
+        }
+        public static T0 Create<T0, T1, T2, T3, T4, T5, T6>(this SqlResultRow row, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6) {
+            var ctor = GetConstructor<T0, T1, T2, T3, T4, T5, T6>();
+            var obj = (T0)ctor.Invoke(new object[] { arg1, arg2, arg3, arg4, arg5, arg6 });
+            obj.SetValues(row);
+            return obj;
+        }
+        public static T0 Create<T0, T1, T2, T3, T4, T5, T6, T7>(this SqlResultRow row, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7) {
+            var ctor = GetConstructor<T0, T1, T2, T3, T4, T5, T6, T7>();
+            var obj = (T0)ctor.Invoke(new object[] { arg1, arg2, arg3, arg4, arg5, arg6, arg7 });
+            obj.SetValues(row);
+            return obj;
+        }
+
+
+        private static Dictionary<Type, ConstructorInfo> _constructors0 = new Dictionary<Type, ConstructorInfo>();
+
+        private static Dictionary<Tuple<Type, Type>, ConstructorInfo> _constructors1 = new Dictionary<Tuple<Type, Type>, ConstructorInfo>();
+        private static Dictionary<Tuple<Type, Type, Type>, ConstructorInfo> _constructors2 = new Dictionary<Tuple<Type, Type, Type>, ConstructorInfo>();
+        private static Dictionary<Tuple<Type, Type, Type, Type>, ConstructorInfo> _constructors3 = new Dictionary<Tuple<Type, Type, Type, Type>, ConstructorInfo>();
+        private static Dictionary<Tuple<Type, Type, Type, Type, Type>, ConstructorInfo> _constructors4 = new Dictionary<Tuple<Type, Type, Type, Type, Type>, ConstructorInfo>();
+        private static Dictionary<Tuple<Type, Type, Type, Type, Type, Type>, ConstructorInfo> _constructors5 = new Dictionary<Tuple<Type, Type, Type, Type, Type, Type>, ConstructorInfo>();
+        private static Dictionary<Tuple<Type, Type, Type, Type, Type, Type, Type>, ConstructorInfo> _constructors6 = new Dictionary<Tuple<Type, Type, Type, Type, Type, Type, Type>, ConstructorInfo>();
+        private static Dictionary<Tuple<Type, Type, Type, Type, Type, Type, Type, Type>, ConstructorInfo> _constructors7 = new Dictionary<Tuple<Type, Type, Type, Type, Type, Type, Type, Type>, ConstructorInfo>();
+
         private static Dictionary<Type, Dictionary<FieldInfo, DbColumnAttribute>> _fields = new Dictionary<Type, Dictionary<FieldInfo, DbColumnAttribute>>();
         private static Dictionary<Type, Dictionary<PropertyInfo, DbColumnAttribute>> _properties = new Dictionary<Type, Dictionary<PropertyInfo, DbColumnAttribute>>();
         private static ConstructorInfo GetConstructor<T>() {
             var t = typeof(T);
-            if (!_constructors.ContainsKey(t)) {
-                _constructors.Add(t, t.GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, new Type[] { }, null));
+            if (!_constructors0.ContainsKey(t)) {
+                _constructors0.Add(t, t.GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, new Type[] { }, null));
             }
-            return _constructors[t];
+            return _constructors0[t];
         }
 
+        private static ConstructorInfo GetConstructor<T0, T1>() {
+            var t = new Tuple<Type, Type>(typeof(T0), typeof(T1));
+            if (!_constructors1.ContainsKey(t)) {
+                _constructors1.Add(t, typeof(T0).GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+                    Type.DefaultBinder, new Type[] { typeof(T1) }, null));
+            }
+            return _constructors1[t];
+        }
+
+        private static ConstructorInfo GetConstructor<T0, T1, T2>() {
+            var t = new Tuple<Type, Type, Type>(typeof(T0), typeof(T1), typeof(T2));
+            if (!_constructors2.ContainsKey(t)) {
+                _constructors2.Add(t, typeof(T0).GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+                    Type.DefaultBinder, new Type[] { typeof(T1), typeof(T2) }, null));
+            }
+            return _constructors2[t];
+        }
+
+        private static ConstructorInfo GetConstructor<T0, T1, T2, T3>() {
+            var t = new Tuple<Type, Type, Type, Type>(typeof(T0), typeof(T1), typeof(T2), typeof(T3));
+            if (!_constructors3.ContainsKey(t)) {
+                _constructors3.Add(t, typeof(T0).GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+                    Type.DefaultBinder, new Type[] { typeof(T1), typeof(T2), typeof(T3) }, null));
+            }
+            return _constructors3[t];
+        }
+        private static ConstructorInfo GetConstructor<T0, T1, T2, T3, T4>() {
+            var t = new Tuple<Type, Type, Type, Type, Type>(typeof(T0), typeof(T1), typeof(T2), typeof(T3), typeof(T4));
+            if (!_constructors4.ContainsKey(t)) {
+                _constructors4.Add(t, typeof(T0).GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+                    Type.DefaultBinder, new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, null));
+            }
+            return _constructors4[t];
+        }
+        private static ConstructorInfo GetConstructor<T0, T1, T2, T3, T4, T5>() {
+            var t = new Tuple<Type, Type, Type, Type, Type, Type>(typeof(T0), typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5));
+            if (!_constructors5.ContainsKey(t)) {
+                _constructors5.Add(t, typeof(T0).GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+                    Type.DefaultBinder, new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5) }, null));
+            }
+            return _constructors5[t];
+        }
+        private static ConstructorInfo GetConstructor<T0, T1, T2, T3, T4, T5, T6>() {
+            var t = new Tuple<Type, Type, Type, Type, Type, Type, Type>(typeof(T0), typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6));
+            if (!_constructors6.ContainsKey(t)) {
+                _constructors6.Add(t, typeof(T0).GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+                    Type.DefaultBinder, new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6) }, null));
+            }
+            return _constructors6[t];
+        }
+        private static ConstructorInfo GetConstructor<T0, T1, T2, T3, T4, T5, T6, T7>() {
+            var t = new Tuple<Type, Type, Type, Type, Type, Type, Type, Type>(typeof(T0), typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7));
+            if (!_constructors7.ContainsKey(t)) {
+                _constructors7.Add(t, typeof(T0).GetConstructor(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance,
+                    Type.DefaultBinder, new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4), typeof(T5), typeof(T6), typeof(T7) }, null));
+            }
+            return _constructors7[t];
+        }
 
         public static void SetValues<T>(this T src, SqlResultRow row) {
             foreach (var p in GetPropertyDictionary<T>()) {
@@ -191,6 +302,4 @@ namespace DatabaseExtension {
             return value.ToDoubleN() ?? defaultValue;
         }
     }
-
-
 }
